@@ -76,7 +76,7 @@ foreach ($queryVideosArr->videos as $video) {
 }
 ```
 
-For more detailed information on all the capabilities of the TikTok Wrapper and additional examples, please refer to the [full documentation](https://swupp.io/components/tt-wrapper)
+For more detailed information on all the capabilities of the TikTok Wrapper and additional examples, please refer to the [full documentation](https://swupp.io/components/tiktok-wrapper)
 
 ## License
 
