@@ -27,8 +27,8 @@ In these examples, you'll see how to use the TikTok Wrapper to perform common ta
 $wrp = new TikTokWrapper();
 
 $authDto = $wrp
-    ->getAuthApi('clientKey', 'clientSecret')
-    ->fetchAccessToken('code', 'http://site.com');
+    ->getAuthApi('CLIENT_KEY', 'CLIENT_SECRET')
+    ->fetchAccessToken('CODE', 'http://site.com/redirect_uri');
 
 $displayApi = $wrp->getDisplayApi($authDto->accessToken);
 
@@ -36,6 +36,7 @@ $userInfoDto = $displayApi
     ->getUserInfo()
     ->setFields(
         UserInfoContract::Username->value,
+        // ...
     )
     ->get();
 
@@ -48,8 +49,8 @@ echo $userInfoDto->username;
 $wrp = new TikTokWrapper();
 
 $authDto = $wrp
-    ->getAuthApi('clientKey', 'clientSecret')
-    ->refreshAccessToken('rft.refreshToken');
+    ->getAuthApi('CLIENT_KEY', 'CLIENT_SECRET')
+    ->refreshAccessToken('REFRESH_TOKEN');
 
 echo $authDto->accessToken;
 ```
@@ -59,15 +60,17 @@ echo $authDto->accessToken;
 ```php
 # code...
 
-$displayApi = $wrp->getDisplayApi($authDto->accessToken);
+$displayApi = $wrp->getDisplayApi('ACCESS_TOKEN');
 
 $queryVideosArr = $displayApi
     ->getQueryVideos()
     ->setFields(
         VideoContract::EmbedHtml->value,
+        // ...
     )
     ->setVideoIds([
         '7251141220062350593',
+        // ...
     ])
     ->get();
 
